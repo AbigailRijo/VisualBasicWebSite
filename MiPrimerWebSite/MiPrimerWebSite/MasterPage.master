@@ -1,0 +1,48 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Bloguea!</title>
+    <link rel="stylesheet" href="CSS/StyleSheet.css" type="text/css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+
+    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder id="styleHeets" runat="server">
+    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder id="javaScript" runat="server">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <header>
+            <ul id="ulMenu">               
+                <% If Session.Count() > 0 Then
+                        Response.Write("<li> <a href= ''> Log Out </a> </li>")
+                        Response.Write("<li> <a href= ''>" + Session("Correo").ToString() + "</a> </li>")
+                    Else
+                        Response.Write("<li>" + "Log In")
+                    End If %>       
+                
+                <li><a href="">Mi Cuenta</a></li>
+                 <li><a href="">Blogs</a></li>
+                 <li id="imagen"><a></a></li>
+                <li id="nombreEmpresa"><img src="Img/7.png"/><a href="">Bloguea!</a></li>
+            </ul>
+        </header>
+    </div>
+    </form>
+            <asp:ContentPlaceHolder id="Body" runat="server"> 
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder id="nose" runat="server">
+        </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder id="UltimosjavaScript" runat="server">
+    </asp:ContentPlaceHolder>
+    <footer>
+                Este es mi pie
+            </footer>
+</body>
+</html>
